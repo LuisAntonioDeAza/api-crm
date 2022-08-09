@@ -7,7 +7,7 @@ import {BrowserRouter,Route, Routes}from 'react-router-dom'
 
 function App() {
 
-
+console.log(import.meta.env.VITE_API_URL)
   return (
     <>
     <BrowserRouter>

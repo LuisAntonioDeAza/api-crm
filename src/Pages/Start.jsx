@@ -10,7 +10,7 @@ const Start = () => {
 
     const getClientAPI = async () => {
       try {
-        const url = "http://localhost:4000/client"
+        const url = import.meta.env.VITE_API_URL
         const response = await fetch(url)
         const result = await response.json()
         setClients(result);
@@ -29,11 +29,12 @@ const Start = () => {
    setClients(clientsUpdate);
 
    try{
-    const url = `http://localhost:4000/client/${id}`
+    const url = `${import.meta.env.VITE_API_URL}/${id}`
     const serverResponse = await fetch(url, {
       method: 'DELETE',})
 
       await serverResponse.json();
+      console.log(serverResponse);
     
 
    }catch(error){

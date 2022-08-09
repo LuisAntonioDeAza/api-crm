@@ -33,7 +33,7 @@ const Forms = ({client}) => {
     const handleSubmit = async (values) => {
         try {
            if(client?.id){
-            const url = `http://localhost:4000/client/${client.id}`;
+            const url = `${import.meta.env.VITE_API_URL}/${client.id}`;
 
             const serverResponse = await fetch(url, {
                 method: 'PUT',
@@ -42,12 +42,13 @@ const Forms = ({client}) => {
                     'Content-Type': 'application/json'
                 }
             });
-
+            console.log(serverResponse);
+            await serverResponse.json();
             
            }else{
 
             //Nuevo registro
-            const url = "http://localhost:4000/client";
+            const url = import.meta.env.VITE_API_URL;
 
             const serverResponse = await fetch(url, {
                 method: 'POST',
@@ -56,7 +57,8 @@ const Forms = ({client}) => {
                     'Content-Type': 'application/json'
                 }
             });
-
+            console.log(serverResponse);
+            await serverResponse.json();
             
            }
            navigate('/');
